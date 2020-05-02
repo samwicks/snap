@@ -6,12 +6,4 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
-description.html
-encodings.xml
-misc.xml
-modules.xml
-project-template.xml
-snap.iml
-uiDesigner.xml
-vcs.xml
-*.class
+/.idea/
