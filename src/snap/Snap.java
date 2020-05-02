@@ -20,6 +20,14 @@ public class Snap {
         play(turn, players, deck);
     }
 
+    /**
+     * Play a game of snap with given arguments
+     *
+     * @param turn Which player's turn is first
+     * @param players Array of players
+     * @param deck Deck of cards to be used
+     * @throws InterruptedException If sleep() command breaks
+     */
     private static void play(int turn, Player[] players, Deck deck) throws InterruptedException {
         Card previous = null;
         Card card;

@@ -13,6 +13,9 @@ public class Player {
         return name;
     }
 
+    /**
+     * @return Random integer between minimum and maximum value
+     */
     public int think() {
         return ThreadLocalRandom.current().nextInt(1000, 2500);
     }
