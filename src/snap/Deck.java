@@ -15,8 +15,8 @@ public class Deck {
      * Generate default deck of cards on construction
      */
     public Deck () {
-        validNumbers = Arrays.asList('A','1','2','3','4','5','6','7','8','9','J','Q','K');
-        validSuits = Arrays.asList('A','C','D','H');
+        validNumbers = Arrays.asList('A','2','3','4','5','6','7','8','9','J','Q','K');
+        validSuits = Arrays.asList('C','D','H','S');
         generateDeck();
     }
 
