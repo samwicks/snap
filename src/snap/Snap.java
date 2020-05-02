@@ -1,7 +1,5 @@
 package snap;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Snap {
@@ -40,13 +38,33 @@ public class Snap {
                 continue;
             }
 
+            // If there's a snap
             if (card.getNumber() == previous.getNumber()) {
-                System.out.print("Match ");
+
+                // All players 'think' to decide winner
+                // Array of winning player's index and their think time
+                Integer[] winner = {0, players[0].think()};
+
+                // Go through rest of players
+                for (int i = 1; i < players.length; i++) {
+                    int think = players[i].think();
+                    if (think < winner[1]) {
+                        winner[0] = i;
+                        winner[1] = think;
+                    }
+                }
+
+                System.out.format("SNAP! %s is the winner!!", players[winner[0]].getName());
+                // Game is over, return
+                return;
             }
-            System.out.format("%s %s\n", card.getNumber(), previous.getNumber());
+//            System.out.format("%s %s\n", card.getNumber(), previous.getNumber());
             // Continue to next player
             previous = card;
             turn++;
         }
+
+        // No more cards in deck... draw
+        System.out.println("No more cards in the deck! It's a draw!");
     }
 }
