@@ -33,10 +33,8 @@ public class Deck {
 
     /**
      * Generate a deck of cards with given numbers and suits
-     *
-     * @return Number of cards generated
      */
-    private int generateDeck() {
+    private void generateDeck() {
         int count = 0;
         for (Character s : validSuits) {
             for (Character n : validNumbers) {
@@ -44,7 +42,6 @@ public class Deck {
                 count++;
             }
         }
-        return count;
     }
 
     /**
