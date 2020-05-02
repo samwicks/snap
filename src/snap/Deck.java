@@ -8,14 +8,14 @@ import java.util.List;
 public class Deck {
 
     private final List<Card> cards = new ArrayList<>();
-    private final List<Character> validNumbers;
+    private final List<String> validNumbers;
     private final List<Character> validSuits;
 
     /**
      * Generate default deck of cards on construction
      */
     public Deck () {
-        validNumbers = Arrays.asList('A','2','3','4','5','6','7','8','9','J','Q','K');
+        validNumbers = Arrays.asList("A","2","3","4","5","6","7","8","9","10","J","Q","K");
         validSuits = Arrays.asList('C','D','H','S');
         generateDeck();
     }
@@ -26,7 +26,7 @@ public class Deck {
      * @param numbers List of valid card numbers
      * @param suits List of valid suits
      */
-    public Deck (List<Character> numbers, List<Character> suits) {
+    public Deck (List<String> numbers, List<Character> suits) {
         validNumbers = numbers;
         validSuits = suits;
     }
@@ -37,7 +37,7 @@ public class Deck {
     private void generateDeck() {
         int count = 0;
         for (Character s : validSuits) {
-            for (Character n : validNumbers) {
+            for (String n : validNumbers) {
                 cards.add(new Card(n, s));
                 count++;
             }
