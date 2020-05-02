@@ -14,7 +14,7 @@ public class Player {
     }
 
     public int think() {
-        return ThreadLocalRandom.current().nextInt(1000, 5000);
+        return ThreadLocalRandom.current().nextInt(1000, 2500);
     }
 
     public String toString() {
