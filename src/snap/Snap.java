@@ -54,7 +54,7 @@ public class Snap {
             // Sleep for quickest player's thinking time
             Thread.sleep(winner[1]);
             // Check if it's a snap
-            if (card.getNumber().equals(previous.getNumber())) {
+            if (card.equalValue(previous)) {
                 // Game is over, return
                 System.out.format("SNAP! %s is the winner!!", players[winner[0]].getName());
                 return;

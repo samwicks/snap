@@ -41,4 +41,8 @@ public class Card {
     public String display() {
         return String.format("%s%c", this.getNumber(), this.getSuit());
     }
+
+    public boolean equalValue(Card card) {
+        return this.getNumber().equals(card.getNumber());
+    }
 }
