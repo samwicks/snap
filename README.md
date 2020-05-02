@@ -7,5 +7,5 @@ Simple implementation of the card game Snap
 # Usage
 Once you've downloaded the release JAR file, execute the following command to run:
 ```
-java -jarfile snap.jar
+java -jar snap.jar
 ```
