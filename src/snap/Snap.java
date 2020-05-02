@@ -4,7 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Snap {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         // Create deck of cards and shuffle
         Deck deck = new Deck();
@@ -20,7 +20,7 @@ public class Snap {
         play(turn, players, deck);
     }
 
-    private static void play(int turn, Player[] players, Deck deck) {
+    private static void play(int turn, Player[] players, Deck deck) throws InterruptedException {
         Card previous = null;
         Card card;
         Player currentPlayer;
@@ -38,27 +38,28 @@ public class Snap {
                 continue;
             }
 
-            // If there's a snap
-            if (card.getNumber() == previous.getNumber()) {
+            // All players 'think' before next turn
+            // Array of player's index and their think time
+            Integer[] winner = {0, players[0].think()};
 
-                // All players 'think' to decide winner
-                // Array of winning player's index and their think time
-                Integer[] winner = {0, players[0].think()};
-
-                // Go through rest of players
-                for (int i = 1; i < players.length; i++) {
-                    int think = players[i].think();
-                    if (think < winner[1]) {
-                        winner[0] = i;
-                        winner[1] = think;
-                    }
+            // Go through rest of players
+            for (int i = 1; i < players.length; i++) {
+                int think = players[i].think();
+                if (think < winner[1]) {
+                    winner[0] = i;
+                    winner[1] = think;
                 }
+            }
 
-                System.out.format("SNAP! %s is the winner!!", players[winner[0]].getName());
+            // Sleep for quickest player's thinking time
+            Thread.sleep(winner[1]);
+            // Check if it's a snap
+            if (card.getNumber().equals(previous.getNumber())) {
                 // Game is over, return
+                System.out.format("SNAP! %s is the winner!!", players[winner[0]].getName());
                 return;
             }
-//            System.out.format("%s %s\n", card.getNumber(), previous.getNumber());
+
             // Continue to next player
             previous = card;
             turn++;
